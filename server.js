@@ -5,20 +5,20 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
 app.get('/article-one', function (req, res) {
-    res.send('Article one requested and will be served here.')
+    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
 }); 
 
 app.get('/article-two', function(req, res){
-    res.send('Article two requested and will served here')
+    res.send('Article two requested and will served here');
 });
 
 app.get('/article-three', function(req, res){
-    res.send('Article three requested and will be served here')
-});
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+    res.send('Article three requested and will be served here');
 });
 
 app.get('/ui/style.css', function (req, res) {
